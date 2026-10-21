@@ -1,0 +1,14 @@
+{
+  "name": "@firebase-compat/capture",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "capture": "node capture.mjs"
+  },
+  "devDependencies": {
+    "esbuild": "^0.28.2",
+    "firebase": "^13.1.0",
+    "playwright-core": "^1.64.1",
+    "ws": "^8.22.0"
+  }
+}
