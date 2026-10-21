@@ -31,6 +31,8 @@ export function cors(req: IncomingMessage, res: ServerResponse): void {
   res.setHeader("access-control-allow-headers", (req.headers["access-control-request-headers"] as string) || "*");
   res.setHeader("access-control-expose-headers", "x-goog-upload-url,x-goog-upload-status,x-goog-upload-size-received,x-goog-upload-chunk-granularity,x-goog-upload-control-url,x-http-session-id,content-type,content-length");
   res.setHeader("access-control-max-age", "3600");
+  // Lets the hosted dashboard (https) reach a server on localhost under Private Network Access.
+  if (req.headers["access-control-request-private-network"]) res.setHeader("access-control-allow-private-network", "true");
 }
 
 export function bearer(req: IncomingMessage): string | undefined {
