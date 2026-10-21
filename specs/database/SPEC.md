@@ -16,7 +16,7 @@ WebSocket at `/.ws?v=5&ns=<namespace>` (long polling `/.lp` is not implemented; 
 
 - Server hello: `{"t":"c","d":{"t":"h","d":{"ts":<ms>,"v":"5","h":"<host>","s":"<session>"}}}`.
 - Client requests: `{"t":"d","d":{"r":<id>,"a":"<action>","b":{...}}}`; replies `{"t":"d","d":{"r":<id>,"b":{"s":"ok","d":...}}}`.
-- Actions: `s` (stats), `q` (listen), `n` (unlisten), `p` (set), `m` (merge/update), `g` (get), `auth`, `gauth`, `unauth`, `o`/`om`/`oc`/`on` (onDisconnect set, merge, cancel), `ps`/`om` variants.
+- Actions: `s` (stats), `q` (listen), `n` (unlisten), `p` (set), `m` (merge/update), `g` (get), `auth`, `gauth`, `unauth`, `o`/`om`/`oc` (onDisconnect set, merge, cancel).
 - Server pushes: `{"t":"d","d":{"a":"d","b":{"p":"<path>","d":<data>,"t":<tag?>}}}` for sets and `"a":"m"` for merges.
 - Transactions use `p` with a `h` field: the SHA-1 hash of the current node. A mismatch returns `{"s":"datastale","d":<current>}` and the SDK retries.
 

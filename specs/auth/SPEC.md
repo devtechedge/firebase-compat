@@ -31,10 +31,10 @@ When `connectAuthEmulator(auth, "http://host:port")` is used, the SDK prefixes e
 
 ## Behaviour
 
-- ID tokens are RS256 JWTs with `iss`/`aud` for the project, `auth_time`, `user_id`, `sub`, `firebase.sign_in_provider` and `firebase.identities`. Keys are published at `/__/auth/jwks` and `/securetoken.googleapis.com/v1/jwks`.
+- ID tokens are RS256 JWTs with `iss`/`aud` for the project, `auth_time`, `user_id`, `sub`, `firebase.sign_in_provider` and `firebase.identities`. Public keys are served as a JWKS at `/robot/v1/metadata/jwk/securetoken@system.gserviceaccount.com`, the same path Google uses, so Admin SDKs and JWT libraries can verify tokens.
 - `expiresIn` is a string of seconds (`"3600"`).
 - Errors are `{"error":{"code":400,"message":"EMAIL_EXISTS","errors":[...]}}`. The SDK maps `message` to `auth/...` codes, so the message string is the contract.
-- Messages reproduced: `EMAIL_EXISTS`, `EMAIL_NOT_FOUND`, `INVALID_PASSWORD`, `INVALID_LOGIN_CREDENTIALS`, `WEAK_PASSWORD : Password should be at least 6 characters`, `INVALID_EMAIL`, `USER_DISABLED`, `TOKEN_EXPIRED`, `INVALID_ID_TOKEN`, `USER_NOT_FOUND`, `MISSING_PASSWORD`.
+- Messages reproduced: `EMAIL_EXISTS`, `EMAIL_NOT_FOUND`, `INVALID_PASSWORD`, `WEAK_PASSWORD : Password should be at least 6 characters`, `INVALID_EMAIL`, `MISSING_EMAIL`, `MISSING_PASSWORD`, `USER_DISABLED`, `USER_NOT_FOUND`, `INVALID_ID_TOKEN`, `INVALID_REFRESH_TOKEN`, `INVALID_CUSTOM_TOKEN`, `INVALID_OOB_CODE`.
 
 ## Quirks
 
