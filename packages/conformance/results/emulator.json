@@ -2,14 +2,14 @@
   {
     "service": "auth",
     "name": "sign up with email returns user email",
-    "ms": 21,
+    "ms": 19,
     "ok": true,
     "value": "U@example.com"
   },
   {
     "service": "auth",
     "name": "new user is not anonymous and has 28 char uid",
-    "ms": 1,
+    "ms": 0,
     "ok": true,
     "value": {
       "anon": false,
@@ -19,7 +19,7 @@
   {
     "service": "auth",
     "name": "id token sign_in_provider is password",
-    "ms": 0,
+    "ms": 1,
     "ok": true,
     "value": "password"
   },
@@ -38,7 +38,7 @@
   {
     "service": "auth",
     "name": "duplicate email is rejected",
-    "ms": 3,
+    "ms": 2,
     "ok": true,
     "value": {
       "error": "auth/email-already-in-use"
@@ -47,7 +47,7 @@
   {
     "service": "auth",
     "name": "weak password is rejected",
-    "ms": 2,
+    "ms": 3,
     "ok": true,
     "value": {
       "error": "auth/weak-password"
@@ -72,7 +72,7 @@
   {
     "service": "auth",
     "name": "sign in with correct password",
-    "ms": 5,
+    "ms": 4,
     "ok": true,
     "value": "U@example.com"
   },
@@ -88,7 +88,7 @@
   {
     "service": "auth",
     "name": "sign in with unknown email",
-    "ms": 4,
+    "ms": 2,
     "ok": true,
     "value": {
       "error": "auth/user-not-found"
@@ -97,28 +97,28 @@
   {
     "service": "auth",
     "name": "update profile display name",
-    "ms": 6,
+    "ms": 5,
     "ok": true,
     "value": "Alice"
   },
   {
     "service": "auth",
     "name": "update password then sign in with it",
-    "ms": 11,
+    "ms": 8,
     "ok": true,
     "value": "Alice"
   },
   {
     "service": "auth",
     "name": "force refresh returns a new token",
-    "ms": 1105,
+    "ms": 1104,
     "ok": true,
     "value": true
   },
   {
     "service": "auth",
     "name": "fetch sign in methods",
-    "ms": 3,
+    "ms": 2,
     "ok": true,
     "value": [
       "password"
@@ -134,7 +134,7 @@
   {
     "service": "auth",
     "name": "delete user then sign in fails",
-    "ms": 3,
+    "ms": 4,
     "ok": true,
     "value": {
       "error": "auth/user-not-found"
@@ -154,7 +154,7 @@
   {
     "service": "auth",
     "name": "custom token sign in with claims",
-    "ms": 4,
+    "ms": 3,
     "ok": true,
     "value": {
       "provider": "custom",
@@ -165,7 +165,7 @@
   {
     "service": "firestore",
     "name": "set and get round trip of rich types",
-    "ms": 98,
+    "ms": 82,
     "ok": true,
     "value": {
       "arr": [
@@ -194,14 +194,14 @@
   {
     "service": "firestore",
     "name": "missing document does not exist",
-    "ms": 8,
+    "ms": 5,
     "ok": true,
     "value": false
   },
   {
     "service": "firestore",
     "name": "merge set keeps other fields",
-    "ms": 12,
+    "ms": 10,
     "ok": true,
     "value": [
       "arr",
@@ -220,7 +220,7 @@
   {
     "service": "firestore",
     "name": "update nested field and delete field",
-    "ms": 10,
+    "ms": 9,
     "ok": true,
     "value": {
       "hasS": false,
@@ -230,7 +230,7 @@
   {
     "service": "firestore",
     "name": "update missing document fails",
-    "ms": 7,
+    "ms": 6,
     "ok": true,
     "value": {
       "error": "not-found"
@@ -239,21 +239,21 @@
   {
     "service": "firestore",
     "name": "increment transform",
-    "ms": 18,
+    "ms": 14,
     "ok": true,
     "value": 42
   },
   {
     "service": "firestore",
     "name": "increment on double",
-    "ms": 9,
+    "ms": 5,
     "ok": true,
     "value": 42.5
   },
   {
     "service": "firestore",
     "name": "arrayUnion and arrayRemove",
-    "ms": 19,
+    "ms": 15,
     "ok": true,
     "value": [
       "b",
@@ -263,28 +263,28 @@
   {
     "service": "firestore",
     "name": "serverTimestamp resolves to a Timestamp",
-    "ms": 9,
+    "ms": 7,
     "ok": true,
     "value": true
   },
   {
     "service": "firestore",
     "name": "addDoc generates a 20 char id",
-    "ms": 5,
+    "ms": 2,
     "ok": true,
     "value": 20
   },
   {
     "service": "firestore",
     "name": "delete document",
-    "ms": 8,
+    "ms": 7,
     "ok": true,
     "value": false
   },
   {
     "service": "firestore",
     "name": "query equality filter",
-    "ms": 24,
+    "ms": 17,
     "ok": true,
     "value": [
       "la",
@@ -294,7 +294,7 @@
   {
     "service": "firestore",
     "name": "query range with implicit order",
-    "ms": 7,
+    "ms": 5,
     "ok": true,
     "value": [
       "sf",
@@ -317,7 +317,7 @@
   {
     "service": "firestore",
     "name": "query limitToLast",
-    "ms": 7,
+    "ms": 5,
     "ok": true,
     "value": [
       "ny",
@@ -327,7 +327,7 @@
   {
     "service": "firestore",
     "name": "query array-contains",
-    "ms": 6,
+    "ms": 5,
     "ok": true,
     "value": [
       "ny",
@@ -337,7 +337,7 @@
   {
     "service": "firestore",
     "name": "query array-contains-any",
-    "ms": 8,
+    "ms": 6,
     "ok": true,
     "value": [
       "dc",
@@ -349,7 +349,7 @@
   {
     "service": "firestore",
     "name": "query in",
-    "ms": 6,
+    "ms": 5,
     "ok": true,
     "value": [
       "bj",
@@ -359,7 +359,7 @@
   {
     "service": "firestore",
     "name": "query not-in excludes null",
-    "ms": 6,
+    "ms": 5,
     "ok": true,
     "value": [
       "bj",
@@ -369,7 +369,7 @@
   {
     "service": "firestore",
     "name": "query != excludes null",
-    "ms": 6,
+    "ms": 4,
     "ok": true,
     "value": [
       "bj",
@@ -389,7 +389,7 @@
   {
     "service": "firestore",
     "name": "query OR composite",
-    "ms": 8,
+    "ms": 6,
     "ok": true,
     "value": [
       "dc",
@@ -399,7 +399,7 @@
   {
     "service": "firestore",
     "name": "query AND of equality and range",
-    "ms": 6,
+    "ms": 5,
     "ok": true,
     "value": [
       "ny",
@@ -409,7 +409,7 @@
   {
     "service": "firestore",
     "name": "query cursors startAt and endBefore",
-    "ms": 7,
+    "ms": 6,
     "ok": true,
     "value": [
       "sf",
@@ -420,7 +420,7 @@
   {
     "service": "firestore",
     "name": "query startAfter snapshot",
-    "ms": 10,
+    "ms": 9,
     "ok": true,
     "value": [
       "ny",
@@ -430,7 +430,7 @@
   {
     "service": "firestore",
     "name": "query orderBy documentId",
-    "ms": 5,
+    "ms": 4,
     "ok": true,
     "value": [
       "bj",
@@ -441,7 +441,7 @@
   {
     "service": "firestore",
     "name": "orderBy excludes docs missing the field",
-    "ms": 13,
+    "ms": 11,
     "ok": true,
     "value": [
       "dc",
@@ -454,7 +454,7 @@
   {
     "service": "firestore",
     "name": "collection group query",
-    "ms": 15,
+    "ms": 11,
     "ok": true,
     "value": [
       "qU/sf/lmU/a",
@@ -464,7 +464,7 @@
   {
     "service": "firestore",
     "name": "subcollection query is scoped to parent",
-    "ms": 5,
+    "ms": 4,
     "ok": true,
     "value": [
       "a"
@@ -480,7 +480,7 @@
   {
     "service": "firestore",
     "name": "sum and average aggregation",
-    "ms": 6,
+    "ms": 5,
     "ok": true,
     "value": {
       "a": 7072,
@@ -490,14 +490,14 @@
   {
     "service": "firestore",
     "name": "filtered count",
-    "ms": 5,
+    "ms": 4,
     "ok": true,
     "value": 3
   },
   {
     "service": "firestore",
     "name": "batch is atomic on failure",
-    "ms": 12,
+    "ms": 8,
     "ok": true,
     "value": {
       "exists": false,
@@ -509,7 +509,7 @@
   {
     "service": "firestore",
     "name": "batch commits multiple writes",
-    "ms": 11,
+    "ms": 9,
     "ok": true,
     "value": [
       "y"
@@ -518,28 +518,28 @@
   {
     "service": "firestore",
     "name": "transaction read-modify-write",
-    "ms": 18,
+    "ms": 15,
     "ok": true,
     "value": 70
   },
   {
     "service": "firestore",
     "name": "concurrent transactions serialize",
-    "ms": 1481,
+    "ms": 1337,
     "ok": true,
     "value": 74
   },
   {
     "service": "firestore",
     "name": "transaction create on missing doc",
-    "ms": 10,
+    "ms": 8,
     "ok": true,
     "value": false
   },
   {
     "service": "firestore",
     "name": "onSnapshot initial and incremental",
-    "ms": 21,
+    "ms": 16,
     "ok": true,
     "value": [
       0,
@@ -551,14 +551,18 @@
   {
     "service": "firestore",
     "name": "onSnapshot docChanges types",
-    "ms": 20000,
-    "ok": false,
-    "error": "timeout"
+    "ms": 7,
+    "ok": true,
+    "value": [
+      "added:a",
+      "modified:a",
+      "removed:a"
+    ]
   },
   {
     "service": "firestore",
     "name": "query listener sees doc leave the result set",
-    "ms": 11,
+    "ms": 9,
     "ok": true,
     "value": [
       1,
@@ -568,7 +572,7 @@
   {
     "service": "database",
     "name": "set and get object",
-    "ms": 30,
+    "ms": 25,
     "ok": true,
     "value": {
       "x": 1,
@@ -589,7 +593,7 @@
   {
     "service": "database",
     "name": "update merges children",
-    "ms": 7,
+    "ms": 4,
     "ok": true,
     "value": {
       "w": true,
@@ -603,7 +607,7 @@
   {
     "service": "database",
     "name": "multi-path update",
-    "ms": 7,
+    "ms": 4,
     "ok": true,
     "value": {
       "one": 1,
@@ -613,7 +617,7 @@
   {
     "service": "database",
     "name": "remove deletes value",
-    "ms": 6,
+    "ms": 5,
     "ok": true,
     "value": {
       "two": 2
@@ -622,7 +626,7 @@
   {
     "service": "database",
     "name": "push keys are ordered",
-    "ms": 8,
+    "ms": 6,
     "ok": true,
     "value": {
       "len": 20,
@@ -636,35 +640,35 @@
   {
     "service": "database",
     "name": "server timestamp",
-    "ms": 5,
+    "ms": 3,
     "ok": true,
     "value": "number"
   },
   {
     "service": "database",
     "name": "server increment",
-    "ms": 7,
+    "ms": 5,
     "ok": true,
     "value": 8
   },
   {
     "service": "database",
     "name": "transaction on number",
-    "ms": 9,
+    "ms": 7,
     "ok": true,
     "value": 9
   },
   {
     "service": "database",
     "name": "concurrent transactions",
-    "ms": 9,
+    "ms": 8,
     "ok": true,
     "value": 12
   },
   {
     "service": "database",
     "name": "transaction on object",
-    "ms": 8,
+    "ms": 5,
     "ok": true,
     "value": {
       "count": 1,
@@ -679,14 +683,14 @@
   {
     "service": "database",
     "name": "transaction abort",
-    "ms": 0,
+    "ms": 1,
     "ok": true,
     "value": false
   },
   {
     "service": "database",
     "name": "orderByChild limitToFirst",
-    "ms": 10,
+    "ms": 8,
     "ok": true,
     "value": [
       "b",
@@ -696,7 +700,7 @@
   {
     "service": "database",
     "name": "orderByChild startAt endAt",
-    "ms": 5,
+    "ms": 2,
     "ok": true,
     "value": [
       "c",
@@ -706,7 +710,7 @@
   {
     "service": "database",
     "name": "orderByKey limitToLast",
-    "ms": 3,
+    "ms": 2,
     "ok": true,
     "value": [
       "c",
@@ -716,7 +720,7 @@
   {
     "service": "database",
     "name": "orderByValue",
-    "ms": 5,
+    "ms": 4,
     "ok": true,
     "value": [
       "y",
@@ -727,7 +731,7 @@
   {
     "service": "database",
     "name": "equalTo",
-    "ms": 3,
+    "ms": 2,
     "ok": true,
     "value": [
       "d"
@@ -747,7 +751,7 @@
   {
     "service": "database",
     "name": "child events",
-    "ms": 8,
+    "ms": 7,
     "ok": true,
     "value": [
       "added:a",
@@ -758,7 +762,7 @@
   {
     "service": "database",
     "name": "arrays become objects with numeric keys",
-    "ms": 5,
+    "ms": 4,
     "ok": true,
     "value": [
       "a",
@@ -768,7 +772,7 @@
   {
     "service": "storage",
     "name": "upload string returns size and type",
-    "ms": 10,
+    "ms": 9,
     "ok": true,
     "value": {
       "name": "a.txt",
@@ -779,7 +783,7 @@
   {
     "service": "storage",
     "name": "metadata has md5 and generation",
-    "ms": 4,
+    "ms": 5,
     "ok": true,
     "value": {
       "bucket": "demo-compat.appspot.com",
@@ -792,7 +796,7 @@
   {
     "service": "storage",
     "name": "download url serves content",
-    "ms": 7,
+    "ms": 6,
     "ok": true,
     "value": {
       "body": "hello world",
@@ -803,14 +807,14 @@
   {
     "service": "storage",
     "name": "getBytes",
-    "ms": 3,
+    "ms": 4,
     "ok": true,
     "value": "hello world"
   },
   {
     "service": "storage",
     "name": "custom metadata",
-    "ms": 10,
+    "ms": 8,
     "ok": true,
     "value": {
       "k": "v"
@@ -830,7 +834,7 @@
   {
     "service": "storage",
     "name": "upload bytes default content type",
-    "ms": 6,
+    "ms": 4,
     "ok": true,
     "value": "application/octet-stream"
   },
@@ -848,7 +852,7 @@
   {
     "service": "storage",
     "name": "listAll with prefixes",
-    "ms": 10,
+    "ms": 8,
     "ok": true,
     "value": {
       "items": [
@@ -865,7 +869,7 @@
   {
     "service": "storage",
     "name": "list with maxResults pages",
-    "ms": 5,
+    "ms": 4,
     "ok": true,
     "value": {
       "more": true,
@@ -875,7 +879,7 @@
   {
     "service": "storage",
     "name": "delete then metadata fails",
-    "ms": 8,
+    "ms": 7,
     "ok": true,
     "value": {
       "error": "storage/object-not-found"
@@ -884,7 +888,7 @@
   {
     "service": "storage",
     "name": "delete missing object fails",
-    "ms": 4,
+    "ms": 2,
     "ok": true,
     "value": {
       "error": "storage/object-not-found"
