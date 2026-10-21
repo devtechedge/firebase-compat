@@ -41,7 +41,16 @@ export class AdminApi {
         const segs = col.split("/");
         const parent = segs.length > 1 ? `${fsRoot}/${segs.slice(0, -1).join("/")}` : fsRoot;
         const docs = s.firestore.query(parent, { from: [{ collectionId: segs[segs.length - 1] }] }, { auth: null, admin: true });
-        return this.ok(res, { documents: docs.map((d) => ({ path: d.name.slice(fsRoot.length + 1), id: d.name.split("/").pop(), data: toPlain({ mapValue: { fields: d.fields } }), createTime: d.createTime, updateTime: d.updateTime })) });
+        const listed = docs.map((d) => ({ path: d.name.slice(fsRoot.length + 1), id: d.name.split("/").pop(), data: toPlain({ mapValue: { fields: d.fields } }) as unknown, createTime: d.createTime, updateTime: d.updateTime, missing: false }));
+        // Documents that do not exist but have subcollections are shown as "missing" parents,
+        // as the Firebase console does.
+        const prefix = `${fsRoot}/${col}/`;
+        for (const name of s.firestore.docs.keys()) {
+          if (!name.startsWith(prefix)) continue;
+          const id = name.slice(prefix.length).split("/")[0];
+          if (name.slice(prefix.length).includes("/") && !listed.some((d) => d.id === id)) listed.push({ path: `${col}/${id}`, id, data: {}, createTime: "", updateTime: "", missing: true });
+        }
+        return this.ok(res, { documents: listed });
       }
       if (route === "firestore/document") {
         const path = url.searchParams.get("path") ?? "";
