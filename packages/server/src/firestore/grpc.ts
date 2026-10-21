@@ -78,7 +78,7 @@ export function createGrpcServer(engine: FirestoreEngine, auth: AuthService): gr
     try {
       for (const m of fn(fromGrpc(call.request), ctxOf(auth, call.metadata))) call.write(toGrpc(m));
       call.end();
-    } catch (e) { call.destroy(toStatus(e)); }
+    } catch (e) { call.emit("error", toStatus(e)); }
   };
   const impl: grpc.UntypedServiceImplementation = {
     GetDocument: unary((r, ctx) => {
@@ -126,7 +126,7 @@ export function createGrpcServer(engine: FirestoreEngine, auth: AuthService): gr
     Listen: (call: grpc.ServerDuplexStream<any, any>) => {
       const ctx = ctxOf(auth, call.metadata);
       const watch = new WatchSession(engine, () => ctx, (m) => { if (!call.writableEnded && !call.destroyed) call.write(toGrpc(m)); });
-      call.on("data", (req) => { try { watch.handle(fromGrpc(req)); } catch (e) { call.destroy(toStatus(e)); } });
+      call.on("data", (req) => { try { watch.handle(fromGrpc(req)); } catch (e) { call.emit("error", toStatus(e)); } });
       call.on("end", () => { watch.close(); call.end(); });
       call.on("error", () => watch.close());
       call.on("cancelled", () => watch.close());
@@ -135,7 +135,7 @@ export function createGrpcServer(engine: FirestoreEngine, auth: AuthService): gr
       const ctx = ctxOf(auth, call.metadata);
       const ws = new WriteSession(engine, () => ctx);
       call.on("data", (req) => {
-        try { call.write(toGrpc(ws.handle(fromGrpc(req)))); } catch (e) { call.destroy(toStatus(e)); }
+        try { call.write(toGrpc(ws.handle(fromGrpc(req)))); } catch (e) { call.emit("error", toStatus(e)); }
       });
       call.on("end", () => call.end());
       call.on("error", () => {});
