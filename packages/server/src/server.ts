@@ -6,6 +6,8 @@ import http from "node:http";
 import net from "node:net";
 import * as grpc from "@grpc/grpc-js";
 import { AuthService } from "./auth/service.js";
+import { DatabaseService } from "./database/service.js";
+import { StorageService } from "./storage/service.js";
 import { FirestoreEngine } from "./firestore/engine.js";
 import { createGrpcServer } from "./firestore/grpc.js";
 import { FirestoreRest } from "./firestore/rest.js";
@@ -30,6 +32,8 @@ export class FirebaseCompatServer {
   readonly auth: AuthService;
   readonly firestore: FirestoreEngine;
   readonly webchannel: WebChannelServer;
+  readonly database: DatabaseService;
+  readonly storage: StorageService;
   readonly handlers: Handler[] = [];
   private http: http.Server;
   private tcp: net.Server;
@@ -44,10 +48,15 @@ export class FirebaseCompatServer {
     this.auth = new AuthService(this.store, this.projectId);
     this.firestore = new FirestoreEngine(this.store, this.projectId);
     this.webchannel = new WebChannelServer(this.firestore, this.auth);
-    this.handlers.push(this.auth, this.webchannel, new FirestoreRest(this.firestore, this.auth));
+    this.database = new DatabaseService(this.store, this.auth, this.projectId);
+    this.storage = new StorageService(this.store);
+    this.handlers.push(this.auth, this.webchannel, new FirestoreRest(this.firestore, this.auth), this.storage, this.database);
     this.grpc = createGrpcServer(this.firestore, this.auth);
     this.http = http.createServer((req, res) => void this.route(req, res));
     this.http.keepAliveTimeout = 65000;
+    this.http.on("upgrade", (req, socket, head) => {
+      if (!this.database.handleUpgrade(req, socket, head)) socket.destroy();
+    });
     this.tcp = net.createServer((sock) => this.demux(sock));
   }
 
