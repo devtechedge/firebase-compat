@@ -1,0 +1,99 @@
+{
+  "transport": "webchannel (headless Chrome)",
+  "passed": 23,
+  "total": 23,
+  "rows": [
+    {
+      "name": "auth.signUp",
+      "pass": true
+    },
+    {
+      "name": "auth.signOut",
+      "pass": true
+    },
+    {
+      "name": "auth.signIn",
+      "pass": true
+    },
+    {
+      "name": "auth.wrongPassword",
+      "pass": true
+    },
+    {
+      "name": "auth.anonymous",
+      "pass": true
+    },
+    {
+      "name": "fs.set",
+      "pass": true
+    },
+    {
+      "name": "fs.get",
+      "pass": true
+    },
+    {
+      "name": "fs.add",
+      "pass": true
+    },
+    {
+      "name": "fs.query",
+      "pass": true
+    },
+    {
+      "name": "fs.batch",
+      "pass": true
+    },
+    {
+      "name": "fs.tx",
+      "pass": true
+    },
+    {
+      "name": "fs.onSnapshot",
+      "pass": true
+    },
+    {
+      "name": "fs.delete",
+      "pass": true
+    },
+    {
+      "name": "db.set",
+      "pass": true
+    },
+    {
+      "name": "db.get",
+      "pass": true
+    },
+    {
+      "name": "db.push",
+      "pass": true
+    },
+    {
+      "name": "db.update",
+      "pass": true
+    },
+    {
+      "name": "db.tx",
+      "pass": true
+    },
+    {
+      "name": "db.onValue",
+      "pass": true
+    },
+    {
+      "name": "st.upload",
+      "pass": true
+    },
+    {
+      "name": "st.url",
+      "pass": true
+    },
+    {
+      "name": "st.metadata",
+      "pass": true
+    },
+    {
+      "name": "st.delete",
+      "pass": true
+    }
+  ]
+}

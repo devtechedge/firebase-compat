@@ -1,0 +1,27 @@
+{
+  "auth": {
+    "passed": 19,
+    "total": 19,
+    "rate": 100
+  },
+  "firestore": {
+    "passed": 40,
+    "total": 40,
+    "rate": 100
+  },
+  "database": {
+    "passed": 20,
+    "total": 20,
+    "rate": 100
+  },
+  "storage": {
+    "passed": 12,
+    "total": 12,
+    "rate": 100
+  },
+  "overall": {
+    "passed": 91,
+    "total": 91,
+    "rate": 100
+  }
+}
