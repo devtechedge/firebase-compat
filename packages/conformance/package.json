@@ -1,0 +1,17 @@
+{
+  "name": "@firebase-compat/conformance",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "license": "MIT",
+  "scripts": {
+    "conformance": "node src/run.mjs",
+    "test": "node src/run.mjs --self-check"
+  },
+  "dependencies": {
+    "firebase": "13.1.0"
+  },
+  "devDependencies": {
+    "@firebase-compat/server": "workspace:^"
+  }
+}

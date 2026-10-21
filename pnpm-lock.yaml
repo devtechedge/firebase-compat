@@ -15,6 +15,16 @@ importers:
         specifier: ^5.8.0
         version: 5.9.3
 
+  packages/conformance:
+    dependencies:
+      firebase:
+        specifier: 13.1.0
+        version: 13.1.0
+    devDependencies:
+      '@firebase-compat/server':
+        specifier: workspace:^
+        version: link:../server
+
   packages/server:
     dependencies:
       '@grpc/grpc-js':
@@ -57,6 +67,8 @@ importers:
       ws:
         specifier: ^8.22.0
         version: 8.22.0
+
+  tools/evidence: {}
 
 packages:
 
