@@ -1,0 +1,11 @@
+node_modules
+dist
+.next
+.turbo
+.vercel
+*.log
+data/
+.firebase-data/
+coverage
+.env*
+!.env.example

@@ -1,0 +1,19 @@
+{
+  "name": "firebase-compat",
+  "private": true,
+  "version": "0.0.0",
+  "description": "Self-hostable backend that the unmodified Firebase JS SDK can talk to",
+  "license": "MIT",
+  "packageManager": "pnpm@9.15.9",
+  "engines": { "node": ">=22.13" },
+  "scripts": {
+    "build": "turbo run build",
+    "test": "turbo run test",
+    "typecheck": "turbo run typecheck",
+    "dev": "pnpm --filter @firebase-compat/server dev"
+  },
+  "devDependencies": {
+    "turbo": "^2.5.0",
+    "typescript": "^5.8.0"
+  }
+}
