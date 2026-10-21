@@ -12,6 +12,9 @@ import { FirestoreEngine } from "./firestore/engine.js";
 import { createGrpcServer } from "./firestore/grpc.js";
 import { FirestoreRest } from "./firestore/rest.js";
 import { WebChannelServer } from "./firestore/webchannel.js";
+import { AdminApi } from "./admin/api.js";
+import { OPEN_RULES, RulesEngine, rulesAuthorizer } from "./rules/index.js";
+import { readFileSync } from "node:fs";
 import { Store } from "./util/db.js";
 import { cors, sendJson } from "./util/http.js";
 import { RpcError } from "./util/status.js";
@@ -23,6 +26,12 @@ export interface ServerOptions {
   /** SQLite file path, or ":memory:" (default). */
   dataFile?: string;
   quiet?: boolean;
+  /** Firestore security rules source; defaults to open rules (allow everything). */
+  rules?: string;
+  /** Path to a firestore.rules file (overrides `rules`). */
+  rulesFile?: string;
+  /** Bearer token required by the /__admin API when set. */
+  adminToken?: string;
 }
 
 export interface Handler { handle(req: http.IncomingMessage, res: http.ServerResponse, url: URL): Promise<boolean> }
@@ -40,6 +49,7 @@ export class FirebaseCompatServer {
   private grpc: grpc.Server;
   private grpcPort = 0;
   readonly projectId: string;
+  rulesSource = OPEN_RULES;
   port = 0;
 
   constructor(readonly options: ServerOptions = {}) {
@@ -50,7 +60,8 @@ export class FirebaseCompatServer {
     this.webchannel = new WebChannelServer(this.firestore, this.auth);
     this.database = new DatabaseService(this.store, this.auth, this.projectId);
     this.storage = new StorageService(this.store);
-    this.handlers.push(this.auth, this.webchannel, new FirestoreRest(this.firestore, this.auth), this.storage, this.database);
+    this.setRules(options.rulesFile ? readFileSync(options.rulesFile, "utf8") : options.rules ?? this.store.get<string>("meta", "rules") ?? OPEN_RULES);
+    this.handlers.push(new AdminApi(this, options.adminToken ?? process.env.ADMIN_TOKEN), this.auth, this.webchannel, new FirestoreRest(this.firestore, this.auth), this.storage, this.database);
     this.grpc = createGrpcServer(this.firestore, this.auth);
     this.http = http.createServer((req, res) => void this.route(req, res));
     this.http.keepAliveTimeout = 65000;
@@ -58,6 +69,14 @@ export class FirebaseCompatServer {
       if (!this.database.handleUpgrade(req, socket, head)) socket.destroy();
     });
     this.tcp = net.createServer((sock) => this.demux(sock));
+  }
+
+  /** Replace the active Firestore security rules (throws on syntax errors). */
+  setRules(source: string) {
+    const rules = new RulesEngine(source);
+    this.rulesSource = source;
+    this.firestore.authorize = rulesAuthorizer(this.firestore, rules);
+    this.store.put("meta", "rules", source);
   }
 
   private async route(req: http.IncomingMessage, res: http.ServerResponse) {

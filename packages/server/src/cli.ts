@@ -13,7 +13,8 @@ const server = new FirebaseCompatServer({
   projectId: opt("project", "FIREBASE_PROJECT", "demo-project"),
   dataFile: opt("data", "DATA_FILE", ":memory:"),
   rulesFile: opt("rules", "FIRESTORE_RULES"),
-} as never);
+  adminToken: opt("admin-token", "ADMIN_TOKEN"),
+});
 const port = await server.start();
 console.log(`firebase-compat listening on :${port} (project ${server.projectId})`);
 for (const sig of ["SIGINT", "SIGTERM"]) process.on(sig, () => void server.stop().then(() => process.exit(0)));
