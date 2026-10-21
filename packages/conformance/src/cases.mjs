@@ -111,9 +111,11 @@ add("firestore", "onSnapshot docChanges types", async ({ db, u }) => {
   const changes = [];
   await new Promise((resolve) => {
     let n = 0;
+    // Latency compensation raises each local change immediately; metadata-only snapshots are skipped.
     const unsub = F.onSnapshot(F.collection(db, `m${u}`), (s) => {
-      if (s.metadata.hasPendingWrites) return;
-      for (const c of s.docChanges()) changes.push(`${c.type}:${c.doc.id}`);
+      const ch = s.docChanges();
+      if (n > 0 && !ch.length) return;
+      for (const c of ch) changes.push(`${c.type}:${c.doc.id}`);
       n++;
       if (n === 1) void F.setDoc(F.doc(db, `m${u}`, "a"), { v: 1 });
       else if (n === 2) void F.updateDoc(F.doc(db, `m${u}`, "a"), { v: 2 });
