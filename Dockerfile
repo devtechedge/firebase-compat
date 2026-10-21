@@ -13,6 +13,7 @@ FROM node:22-slim
 ENV NODE_ENV=production PORT=8787 DATA_FILE=/data/firebase-compat.sqlite FIREBASE_PROJECT=demo-project NODE_NO_WARNINGS=1
 WORKDIR /app
 COPY --from=build /out /app
+RUN mkdir -p /data && chown node:node /data
 VOLUME /data
 EXPOSE 8787
 HEALTHCHECK --interval=10s --timeout=3s CMD node -e "fetch('http://127.0.0.1:'+process.env.PORT+'/healthz').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"
