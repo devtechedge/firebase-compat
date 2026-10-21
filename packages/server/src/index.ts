@@ -1,2 +1,3 @@
-// Package entry point. Server implementation lands here.
-export {};
+export { FirebaseCompatServer, type ServerOptions } from "./server.js";
+export { FirestoreEngine } from "./firestore/engine.js";
+export { AuthService } from "./auth/service.js";
