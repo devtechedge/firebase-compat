@@ -1,0 +1,159 @@
+{
+  "har-auth": {
+    "evidence_id": "ev_c01271acac4f552dafb8b2da611adbbaa6ea6891470ee1ecd30659b0fc82ed0f",
+    "operation": "inspect_web_network_capture",
+    "subject_sha256": "e0aef8511c33fa657f8cb16d9fa17348987e0876547be8516ad4917e534b490c",
+    "records": 10,
+    "endpoints": [
+      "OPTIONS /identitytoolkit.googleapis.com/v1/accounts:lookup",
+      "OPTIONS /identitytoolkit.googleapis.com/v1/accounts:signInWithPassword",
+      "OPTIONS /identitytoolkit.googleapis.com/v1/accounts:signUp",
+      "POST /identitytoolkit.googleapis.com/v1/accounts:lookup",
+      "POST /identitytoolkit.googleapis.com/v1/accounts:signInWithPassword",
+      "POST /identitytoolkit.googleapis.com/v1/accounts:signUp"
+    ]
+  },
+  "har-database": {
+    "evidence_id": "ev_307061c4d5e5bbcbadf652382208721f0f8e7eab6eb1073cc1f64daa44c5f05c",
+    "operation": "inspect_web_network_capture",
+    "subject_sha256": "a5d373f76c18cbe6332b2b4dbe629950b3f23599b1ba39b8f49d4124257e13d6",
+    "records": 1,
+    "endpoints": [
+      "GET /.ws"
+    ]
+  },
+  "har-firestore": {
+    "evidence_id": "ev_f1290f321bb37db57faa705f8247e989fc6a0c97b572acbcac4e64e61107186e",
+    "operation": "inspect_web_network_capture",
+    "subject_sha256": "807c64e07911f3359bac4290cc582f9943fcbd45b9a2da49c709d1a0751c6671",
+    "records": 17,
+    "endpoints": [
+      "GET /google.firestore.v1.Firestore/Listen/channel",
+      "GET /google.firestore.v1.Firestore/Write/channel",
+      "OPTIONS /v1/projects/demo-compat/databases/(default)/documents:batchGet",
+      "OPTIONS /v1/projects/demo-compat/databases/(default)/documents:commit",
+      "POST /google.firestore.v1.Firestore/Listen/channel",
+      "POST /google.firestore.v1.Firestore/Write/channel",
+      "POST /v1/projects/demo-compat/databases/(default)/documents:batchGet",
+      "POST /v1/projects/demo-compat/databases/(default)/documents:commit"
+    ]
+  },
+  "har-storage": {
+    "evidence_id": "ev_7ef111285a4ac757004318285d7e2012275ff4657c3da068dc2d1dbc50a554b3",
+    "operation": "inspect_web_network_capture",
+    "subject_sha256": "674968f89ae474d84057745b0b21cb2b04cd2969aeab0341aa602de4d6476f4b",
+    "records": 6,
+    "endpoints": [
+      "DELETE /v0/b/demo-compat.appspot.com/o/{object}",
+      "GET /v0/b/demo-compat.appspot.com/o/{object}",
+      "OPTIONS /v0/b/demo-compat.appspot.com/o",
+      "OPTIONS /v0/b/demo-compat.appspot.com/o/{object}",
+      "POST /v0/b/demo-compat.appspot.com/o"
+    ]
+  },
+  "js-auth": {
+    "evidence_id": "ev_cd63765ad8cdc37f22b2ebb9809cb1624d4886c84b03d5aa1afc6eac09163476",
+    "operation": "analyze_javascript_application",
+    "subject_sha256": "4ec5acaff0c8aded6d4ff69a42e7b48f823b819c278561204d06fd7765409d4c",
+    "statistics": {
+      "relevant_files": 5,
+      "nested_asar_containers": 0,
+      "text_bytes_read": 463189,
+      "invalid_utf8_files": 0,
+      "parsed_javascript_files": 1,
+      "skipped_javascript_files": 0,
+      "visited_ast_nodes": 28712,
+      "findings": 144,
+      "modules": 0,
+      "parse_failures": 0
+    },
+    "semantic_nodes": 19682,
+    "semantic_relations": 17223,
+    "unknowns": 6323,
+    "function_fingerprints": 819
+  },
+  "js-database": {
+    "evidence_id": "ev_eb30821f86d1055e3843e73060cf90739cced1a8021ebd99383f9108f6bbd2eb",
+    "operation": "analyze_javascript_application",
+    "subject_sha256": "4ec5acaff0c8aded6d4ff69a42e7b48f823b819c278561204d06fd7765409d4c",
+    "statistics": {
+      "relevant_files": 5,
+      "nested_asar_containers": 0,
+      "text_bytes_read": 551023,
+      "invalid_utf8_files": 0,
+      "parsed_javascript_files": 1,
+      "skipped_javascript_files": 0,
+      "visited_ast_nodes": 43427,
+      "findings": 100,
+      "modules": 0,
+      "parse_failures": 0
+    },
+    "semantic_nodes": 20003,
+    "semantic_relations": 18053,
+    "unknowns": 9617,
+    "function_fingerprints": 1076
+  },
+  "js-firestore-common": {
+    "evidence_id": "ev_48834378a15a3aeadf94612776796a73c374f086976a9b79e54b15fbaaaeee4d",
+    "operation": "analyze_javascript_application",
+    "subject_sha256": "9ca995a6b8dab5669b4fbe08ea7f074753b2a6e894b9b61f04002a3e60f29f6a",
+    "statistics": {
+      "relevant_files": 6,
+      "nested_asar_containers": 0,
+      "text_bytes_read": 1246966,
+      "invalid_utf8_files": 0,
+      "parsed_javascript_files": 1,
+      "skipped_javascript_files": 0,
+      "visited_ast_nodes": 114738,
+      "findings": 373,
+      "modules": 0,
+      "parse_failures": 0
+    },
+    "semantic_nodes": 20004,
+    "semantic_relations": 10914,
+    "unknowns": 20048,
+    "function_fingerprints": 3848
+  },
+  "js-firestore": {
+    "evidence_id": "ev_c3b7b0cb0841b9dd8e3af075bc01def91af3eac9cbd34d77f0947e0783c5c974",
+    "operation": "analyze_javascript_application",
+    "subject_sha256": "4ec5acaff0c8aded6d4ff69a42e7b48f823b819c278561204d06fd7765409d4c",
+    "statistics": {
+      "relevant_files": 5,
+      "nested_asar_containers": 0,
+      "text_bytes_read": 79295,
+      "invalid_utf8_files": 0,
+      "parsed_javascript_files": 1,
+      "skipped_javascript_files": 0,
+      "visited_ast_nodes": 5879,
+      "findings": 227,
+      "modules": 0,
+      "parse_failures": 0
+    },
+    "semantic_nodes": 4939,
+    "semantic_relations": 4700,
+    "unknowns": 1530,
+    "function_fingerprints": 175
+  },
+  "js-storage": {
+    "evidence_id": "ev_f0543622f50c6cb58533c7dc79ee18e25741c8c8ac15b3637f5f88b177c4d0d7",
+    "operation": "analyze_javascript_application",
+    "subject_sha256": "4ec5acaff0c8aded6d4ff69a42e7b48f823b819c278561204d06fd7765409d4c",
+    "statistics": {
+      "relevant_files": 5,
+      "nested_asar_containers": 0,
+      "text_bytes_read": 131759,
+      "invalid_utf8_files": 0,
+      "parsed_javascript_files": 1,
+      "skipped_javascript_files": 0,
+      "visited_ast_nodes": 10432,
+      "findings": 44,
+      "modules": 0,
+      "parse_failures": 0
+    },
+    "semantic_nodes": 7448,
+    "semantic_relations": 6191,
+    "unknowns": 2301,
+    "function_fingerprints": 291
+  }
+}

@@ -1,0 +1,76 @@
+{
+  "generated": "2026-10-21T16:08:41.828Z",
+  "tool": "rea-agents@6.7.0",
+  "artifacts": [
+    {
+      "path": "raw/emulator-auth.har",
+      "sha256": "e0aef8511c33fa657f8cb16d9fa17348987e0876547be8516ad4917e534b490c",
+      "bytes": 42276
+    },
+    {
+      "path": "raw/emulator-database.har",
+      "sha256": "a5d373f76c18cbe6332b2b4dbe629950b3f23599b1ba39b8f49d4124257e13d6",
+      "bytes": 8035
+    },
+    {
+      "path": "raw/emulator-firestore.har",
+      "sha256": "807c64e07911f3359bac4290cc582f9943fcbd45b9a2da49c709d1a0751c6671",
+      "bytes": 79438
+    },
+    {
+      "path": "raw/emulator-storage.har",
+      "sha256": "674968f89ae474d84057745b0b21cb2b04cd2969aeab0341aa602de4d6476f4b",
+      "bytes": 24480
+    },
+    {
+      "path": "raw/emulator-web-scenario.results.json",
+      "sha256": "3dd068765292ecb90b3d3361839c1a9b945a2177f5663a9ec83e2d060920443f",
+      "bytes": 1622
+    },
+    {
+      "path": "rea/har-auth.json.gz",
+      "sha256": "6d360063a70c09368350044260c0d21e669cb2baf39712b865614979147eda5b",
+      "bytes": 4907
+    },
+    {
+      "path": "rea/har-database.json.gz",
+      "sha256": "68e17f5f30ec4395daa9f8af1829ce73b189453d0c29cd935962d52cba8a34bf",
+      "bytes": 3324
+    },
+    {
+      "path": "rea/har-firestore.json.gz",
+      "sha256": "2764927233d684ba604bb65a29160fcc179064eef6659133befbc7dc7374c40f",
+      "bytes": 6875
+    },
+    {
+      "path": "rea/har-storage.json.gz",
+      "sha256": "0bb48f4468be6d5aa41332656fef7907eccc756d0a3858aa246a01dd005c0e93",
+      "bytes": 3360
+    },
+    {
+      "path": "rea/js-auth.json.gz",
+      "sha256": "00d6a31667ca09ccf9e5d872e159e7c9f97b88d642343849e6065bbbb00d9f36",
+      "bytes": 5568452
+    },
+    {
+      "path": "rea/js-database.json.gz",
+      "sha256": "b2c50d41ee3b1d22c82ea3465bee053d8e2321fd3f4e8f3c9d52006b2dd6bdc9",
+      "bytes": 5962636
+    },
+    {
+      "path": "rea/js-firestore-common.json.gz",
+      "sha256": "481c1d209fe5292737c2df341e2c9f30f6ebfbe0c9ad5f8b927a4ef2b64a6c2d",
+      "bytes": 6769681
+    },
+    {
+      "path": "rea/js-firestore.json.gz",
+      "sha256": "b4cefb3006e89819fb524dc5135d8c864a9a3fcd5f55cff9ffcda14aee0fddda",
+      "bytes": 1403172
+    },
+    {
+      "path": "rea/js-storage.json.gz",
+      "sha256": "fd3b3bb7d6fef3859da4f4ec9bac13cb6c8b5a7078fa045b2b109e626ceb7b6b",
+      "bytes": 1995921
+    }
+  ]
+}

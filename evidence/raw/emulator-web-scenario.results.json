@@ -1,0 +1,122 @@
+[
+  {
+    "name": "auth.signUp",
+    "ok": true,
+    "value": "u1792598733949@example.com"
+  },
+  {
+    "name": "auth.signOut",
+    "ok": true,
+    "value": null
+  },
+  {
+    "name": "auth.signIn",
+    "ok": true,
+    "value": "u1792598733949@example.com"
+  },
+  {
+    "name": "auth.wrongPassword",
+    "ok": false,
+    "error": "auth/wrong-password"
+  },
+  {
+    "name": "auth.anonymous",
+    "ok": true,
+    "value": true
+  },
+  {
+    "name": "fs.set",
+    "ok": true
+  },
+  {
+    "name": "fs.get",
+    "ok": true,
+    "value": {
+      "n": 1,
+      "tag": "x"
+    }
+  },
+  {
+    "name": "fs.add",
+    "ok": true,
+    "value": "string"
+  },
+  {
+    "name": "fs.query",
+    "ok": true,
+    "value": [
+      1,
+      2
+    ]
+  },
+  {
+    "name": "fs.batch",
+    "ok": true
+  },
+  {
+    "name": "fs.tx",
+    "ok": true,
+    "value": 11
+  },
+  {
+    "name": "fs.onSnapshot",
+    "ok": true,
+    "value": 3
+  },
+  {
+    "name": "fs.delete",
+    "ok": true
+  },
+  {
+    "name": "db.set",
+    "ok": true
+  },
+  {
+    "name": "db.get",
+    "ok": true,
+    "value": {
+      "n": 1
+    }
+  },
+  {
+    "name": "db.push",
+    "ok": true,
+    "value": "string"
+  },
+  {
+    "name": "db.update",
+    "ok": true
+  },
+  {
+    "name": "db.tx",
+    "ok": true,
+    "value": 2
+  },
+  {
+    "name": "db.onValue",
+    "ok": true,
+    "value": {
+      "m": 2,
+      "n": 2
+    }
+  },
+  {
+    "name": "st.upload",
+    "ok": true,
+    "value": 11
+  },
+  {
+    "name": "st.url",
+    "ok": true,
+    "value": true
+  },
+  {
+    "name": "st.metadata",
+    "ok": true,
+    "value": "text/plain"
+  },
+  {
+    "name": "st.delete",
+    "ok": true
+  }
+]
