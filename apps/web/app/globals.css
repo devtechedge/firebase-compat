@@ -1,13 +1,15 @@
-:root { --bg: #0b0d12; --panel: #141821; --line: #232a36; --text: #e6e9ef; --muted: #8b94a7; --accent: #ff8a3d; --accent2: #ffc24b; --ok: #3ccf91; --bad: #ff5d6c; }
+:root, [data-theme="dark"] { color-scheme: dark; --bg: #0b0d12; --panel: #141821; --line: #232a36; --text: #e6e9ef; --muted: #8b94a7; --accent: #ff8a3d; --accent2: #ffc24b; --link: #ffc24b; --ok: #3ccf91; --bad: #ff5d6c; --field: #0f131a; --on-accent: #111; --header: var(--header); --msg: var(--msg); --msg-me: var(--msg-me); --thumb: rgba(148,160,180,.45); }
+[data-theme="light"] { color-scheme: light; --bg: #e3e8ee; --panel: #eef1f5; --line: #c4ccd6; --text: #1a2230; --muted: #566174; --accent: #e8702a; --accent2: #f2a93b; --link: #a14c06; --ok: #11795a; --bad: #b8283a; --field: #f6f8fa; --on-accent: #111; --header: rgba(227,232,238,.92); --msg: #dde3ea; --msg-me: #f6dfc6; --thumb: rgba(70,82,100,.45); }
 * { box-sizing: border-box; }
 body { margin: 0; background: var(--bg); color: var(--text); font: 15px/1.55 ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif; }
-a { color: var(--accent2); text-decoration: none; }
+a { color: var(--link); text-decoration: none; }
 a:hover { text-decoration: underline; }
 code, pre, .mono { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 13px; }
-pre { background: #0f131a; border: 1px solid var(--line); border-radius: 8px; padding: 12px; overflow: auto; }
-header.top { display: flex; align-items: center; gap: 20px; padding: 14px 28px; border-bottom: 1px solid var(--line); position: sticky; top: 0; background: rgba(11,13,18,.92); backdrop-filter: blur(6px); z-index: 5; }
+pre { background: var(--field); border: 1px solid var(--line); border-radius: 8px; padding: 12px; overflow: auto; }
+header.top { display: flex; align-items: center; gap: 20px; padding: 14px 28px; border-bottom: 1px solid var(--line); position: sticky; top: 0; background: var(--header); backdrop-filter: blur(6px); z-index: 5; }
 header.top .brand { font-weight: 700; font-size: 17px; color: var(--text); display: flex; gap: 8px; align-items: center; }
-header.top nav { display: flex; gap: 16px; }
+header.top nav { display: flex; gap: 16px; align-items: center; }
+header.top .spacer { flex: 1; }
 main { max-width: 1180px; margin: 0 auto; padding: 28px; }
 .hero h1 { font-size: 44px; line-height: 1.1; margin: 20px 0 12px; }
 .hero h1 span { background: linear-gradient(90deg, var(--accent), var(--accent2)); -webkit-background-clip: text; color: transparent; }
@@ -19,24 +21,37 @@ main { max-width: 1180px; margin: 0 auto; padding: 28px; }
 .pill { display: inline-block; padding: 2px 10px; border-radius: 999px; border: 1px solid var(--line); font-size: 12px; color: var(--muted); }
 .pill.ok { color: var(--ok); border-color: rgba(60,207,145,.4); }
 .pill.bad { color: var(--bad); border-color: rgba(255,93,108,.4); }
-button, .btn { background: var(--accent); color: #111; border: 0; border-radius: 8px; padding: 8px 14px; font-weight: 600; cursor: pointer; }
+button, .btn { background: var(--accent); color: var(--on-accent); border: 0; border-radius: 8px; padding: 8px 14px; font-weight: 600; cursor: pointer; }
 button.ghost { background: transparent; color: var(--text); border: 1px solid var(--line); }
 button:disabled { opacity: .5; cursor: default; }
-input, textarea, select { background: #0f131a; color: var(--text); border: 1px solid var(--line); border-radius: 8px; padding: 8px 10px; font: inherit; }
+input, textarea, select { background: var(--field); color: var(--text); border: 1px solid var(--line); border-radius: 8px; padding: 8px 10px; font: inherit; }
 textarea { width: 100%; min-height: 260px; font-family: ui-monospace, monospace; font-size: 13px; }
 table { width: 100%; border-collapse: collapse; }
 th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--line); vertical-align: top; }
 th { color: var(--muted); font-weight: 500; font-size: 13px; }
 .tabs { display: flex; gap: 6px; margin: 18px 0; flex-wrap: wrap; }
 .tabs button { background: transparent; color: var(--muted); border: 1px solid var(--line); }
-.tabs button.active { color: #111; background: var(--accent2); border-color: var(--accent2); }
+.tabs button.active { color: var(--on-accent); background: var(--accent2); border-color: var(--accent2); }
 .row { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
 .split { display: grid; grid-template-columns: 240px 1fr; gap: 16px; }
 .list button { display: block; width: 100%; text-align: left; margin-bottom: 4px; background: transparent; color: var(--text); border: 1px solid transparent; font-weight: 400; }
 .list button.active { border-color: var(--accent); }
 .err { color: var(--bad); }
 .chat { height: 380px; overflow: auto; display: flex; flex-direction: column; gap: 8px; padding: 6px; }
-.msg { background: #1b2130; border-radius: 10px; padding: 8px 12px; max-width: 75%; }
-.msg.me { align-self: flex-end; background: #3a2a18; }
+.msg { background: var(--msg); border-radius: 10px; padding: 8px 12px; max-width: 75%; }
+.msg.me { align-self: flex-end; background: var(--msg-me); }
 .msg small { color: var(--muted); display: block; font-size: 11px; }
 footer { color: var(--muted); text-align: center; padding: 30px; font-size: 13px; }
+
+/* Overlay scrollbars: hidden until the pane is hovered. The document bar stays native. */
+.chat, pre, textarea, .list, .scroll, table, [style*="overflow"] { scrollbar-width: thin; scrollbar-color: transparent transparent; }
+.chat:hover, pre:hover, textarea:hover, .list:hover, .scroll:hover, table:hover, [style*="overflow"]:hover,
+.chat:focus-within, pre:focus-within, textarea:focus, .list:focus-within, .scroll:focus-within { scrollbar-color: var(--thumb) transparent; }
+:not(html):not(body)::-webkit-scrollbar { width: 8px; height: 8px; background: transparent; }
+:not(html):not(body)::-webkit-scrollbar-button { display: none; }
+:not(html):not(body)::-webkit-scrollbar-thumb { background: transparent; border-radius: 8px; }
+:not(html):not(body):hover::-webkit-scrollbar-thumb, :not(html):not(body):focus-within::-webkit-scrollbar-thumb { background: var(--thumb); }
+
+.theme-toggle { position: relative; width: 36px; height: 36px; padding: 0; display: inline-grid; place-items: center; background: transparent; color: var(--text); border: 1px solid var(--line); border-radius: 8px; }
+.theme-toggle svg { grid-area: 1 / 1; transition: opacity .3s, transform .3s, filter .3s; }
+.theme-toggle .off { opacity: 0; transform: scale(.25); filter: blur(4px); }
