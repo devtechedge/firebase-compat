@@ -1,0 +1,1 @@
+{ "name": "@firebase-compat/evidence-tools", "private": true, "type": "module", "scripts": { "manifest": "node build-manifest.mjs" } }
