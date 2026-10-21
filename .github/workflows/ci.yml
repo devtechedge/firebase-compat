@@ -18,3 +18,40 @@ jobs:
       - run: pnpm build
       - run: pnpm typecheck
       - run: pnpm test
+
+  conformance:
+    runs-on: ubuntu-latest
+    needs: test
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 21
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm --filter @firebase-compat/server build
+      - run: npm install -g firebase-tools
+      - name: Start Firebase Emulator Suite (reference backend)
+        working-directory: packages/conformance/emulator
+        run: |
+          firebase emulators:start --project demo-compat > emulator.log 2>&1 &
+          for i in $(seq 1 90); do curl -sf http://127.0.0.1:4400/emulators >/dev/null && break; sleep 2; done
+          sleep 5
+      - run: node src/run.mjs --target emulator
+        working-directory: packages/conformance
+      - run: node src/run.mjs --target compat
+        working-directory: packages/conformance
+      - run: node src/run.mjs --compare results/emulator.json results/compat.json --strict
+        working-directory: packages/conformance
+      - run: cat packages/conformance/results/report.md >> "$GITHUB_STEP_SUMMARY"
+        if: always()
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: conformance-results
+          path: packages/conformance/results
