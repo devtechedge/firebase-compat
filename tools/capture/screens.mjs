@@ -22,6 +22,11 @@ await a.screenshot({ path: `${out}/demo.png` });
 console.log("realtime sync verified between two browser contexts");
 await a.goto(`${site}/dashboard`); await a.waitForSelector("text=connected to"); await a.waitForTimeout(500); await a.screenshot({ path: `${out}/dashboard.png` });
 await a.click("button:has-text('users')"); await a.waitForTimeout(700); await a.screenshot({ path: `${out}/dashboard-users.png` });
-await a.click("button:has-text('firestore')"); await a.waitForTimeout(500); await a.click(".list button:has-text('rooms')"); await a.waitForTimeout(600); await a.screenshot({ path: `${out}/dashboard-firestore.png` });
+await a.click("button:has-text('firestore')"); await a.waitForTimeout(500); await a.click(".list button:has-text('rooms')"); await a.waitForTimeout(600);
+if (await a.locator("td.mono a").count()) { await a.locator("td.mono a").first().click(); await a.waitForTimeout(400);
+  await a.click("button:has-text('Subcollections')");
+  if (await a.waitForSelector(".list button:has-text('messages')", { timeout: 5000 }).catch(() => null)) { await a.click(".list button:has-text('messages')"); await a.waitForTimeout(600); await a.mouse.move(640, 120); await a.evaluate(() => window.scrollTo(0, 0)); await a.waitForTimeout(400); } }
+await a.screenshot({ path: `${out}/dashboard-firestore.png` });
 await a.click("button:has-text('rules')"); await a.waitForTimeout(600); await a.screenshot({ path: `${out}/dashboard-rules.png` });
+await a.evaluate(() => { localStorage.setItem("theme", "light"); }); await a.goto(`${site}/dashboard`); await a.waitForSelector("text=connected to"); await a.click("button:has-text('users')"); await a.waitForTimeout(700); await a.screenshot({ path: `${out}/dashboard-users-light.png` });
 await browser.close();
