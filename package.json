@@ -1,7 +1,7 @@
 {
   "name": "firebase-compat",
   "private": true,
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Self-hostable backend that the unmodified Firebase JS SDK can talk to",
   "license": "MIT",
   "packageManager": "pnpm@9.15.9",
