@@ -2,12 +2,29 @@
 
 A self-hostable backend that the official, unmodified Firebase JS SDK talks to. Point `connectAuthEmulator`, `connectFirestoreEmulator`, `connectDatabaseEmulator` and `connectStorageEmulator` at one port and your app keeps working: Auth, Cloud Firestore, Realtime Database and Cloud Storage, persisted to a single SQLite file.
 
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-Vercel-black?logo=vercel)](https://firebase-compat.vercel.app)
 [![CI](https://github.com/devtechedge/firebase-compat/actions/workflows/ci.yml/badge.svg)](https://github.com/devtechedge/firebase-compat/actions/workflows/ci.yml)
-[![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+[![Node.js](https://img.shields.io/badge/Node.js-22.13+-339933?logo=node.js&logoColor=white)](https://nodejs.org/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5-blue?logo=typescript)](https://www.typescriptlang.org/)
+[![Next.js](https://img.shields.io/badge/Next.js-15-black?logo=next.js)](https://nextjs.org/)
+[![Conformance](https://img.shields.io/badge/conformance-91%2F91-3ccf91)](docs/compatibility.md)
+[![License: MIT](https://img.shields.io/badge/License-MIT-green)](LICENSE)
 
-Website, dashboard and demo: https://firebase-compat.vercel.app (front end only; it connects to a server you run).
+## Live Demo
 
-![Dashboard](docs/screenshots/dashboard.png)
+**https://firebase-compat.vercel.app** (landing page, `/demo` realtime chat, `/dashboard`, `/docs`)
+
+> **Status:** The Vercel deployment is the web front end only. It does not host a backend. The demo and dashboard connect from your browser to a firebase-compat server you run yourself, by default `http://localhost:8787` (start one with `docker compose up -d`). Without a running server the pages load but show a connection error.
+
+## Screenshots
+
+| Realtime chat demo | Firestore browser |
+| --- | --- |
+| ![Realtime chat demo](docs/screenshots/demo.png) | ![Firestore browser](docs/screenshots/dashboard-firestore.png) |
+
+| Auth users (light theme) | Security rules |
+| --- | --- |
+| ![Auth users, light theme](docs/screenshots/dashboard-users-light.png) | ![Security rules](docs/screenshots/dashboard-rules.png) |
 
 ## Conformance
 
@@ -87,12 +104,6 @@ node packages/conformance/src/run.mjs --target emulator
 node packages/conformance/src/run.mjs --target compat
 node packages/conformance/src/run.mjs --compare packages/conformance/results/emulator.json packages/conformance/results/compat.json
 ```
-
-## Screenshots
-
-| Demo chat | Firestore browser | Rules |
-| --- | --- | --- |
-| ![Demo](docs/screenshots/demo.png) | ![Firestore](docs/screenshots/dashboard-firestore.png) | ![Rules](docs/screenshots/dashboard-rules.png) |
 
 ## Clean room
 
