@@ -26,5 +26,19 @@
     "firebase": "^13.1.0",
     "firebase-admin": "^14.5.0",
     "vitest": "^5.0.5"
+  },
+  "files": [
+    "dist",
+    "protos",
+    "README.md"
+  ],
+  "description": "Self-hostable backend compatible with the unmodified Firebase JS SDK (Auth, Firestore, Realtime Database, Storage)",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/devtechedge/firebase-compat",
+    "directory": "packages/server"
+  },
+  "engines": {
+    "node": ">=22.13"
   }
 }
