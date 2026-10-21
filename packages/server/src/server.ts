@@ -98,7 +98,11 @@ export class FirebaseCompatServer {
     }
   }
 
+  private sockets = new Set<net.Socket>();
+
   private demux(sock: net.Socket) {
+    this.sockets.add(sock);
+    sock.on("close", () => this.sockets.delete(sock));
     sock.once("data", (buf: Buffer) => {
       sock.pause();
       if (buf.subarray(0, 4).toString() === "PRI ") {
@@ -130,6 +134,7 @@ export class FirebaseCompatServer {
     this.webchannel.stop();
     this.grpc.forceShutdown();
     this.http.closeAllConnections();
+    for (const s of this.sockets) s.destroy();
     await new Promise<void>((r) => this.tcp.close(() => r()));
     this.store.close();
   }
