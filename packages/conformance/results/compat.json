@@ -1,0 +1,893 @@
+[
+  {
+    "service": "auth",
+    "name": "sign up with email returns user email",
+    "ms": 60,
+    "ok": true,
+    "value": "U@example.com"
+  },
+  {
+    "service": "auth",
+    "name": "new user is not anonymous and has 28 char uid",
+    "ms": 0,
+    "ok": true,
+    "value": {
+      "anon": false,
+      "len": 28
+    }
+  },
+  {
+    "service": "auth",
+    "name": "id token sign_in_provider is password",
+    "ms": 1,
+    "ok": true,
+    "value": "password"
+  },
+  {
+    "service": "auth",
+    "name": "id token carries email and email_verified",
+    "ms": 0,
+    "ok": true,
+    "value": {
+      "aud": "demo-compat",
+      "email": "U@example.com",
+      "iss": "https://securetoken.google.com/demo-compat",
+      "verified": false
+    }
+  },
+  {
+    "service": "auth",
+    "name": "duplicate email is rejected",
+    "ms": 2,
+    "ok": true,
+    "value": {
+      "error": "auth/email-already-in-use"
+    }
+  },
+  {
+    "service": "auth",
+    "name": "weak password is rejected",
+    "ms": 2,
+    "ok": true,
+    "value": {
+      "error": "auth/weak-password"
+    }
+  },
+  {
+    "service": "auth",
+    "name": "invalid email is rejected",
+    "ms": 2,
+    "ok": true,
+    "value": {
+      "error": "auth/invalid-email"
+    }
+  },
+  {
+    "service": "auth",
+    "name": "sign out clears current user",
+    "ms": 0,
+    "ok": true,
+    "value": null
+  },
+  {
+    "service": "auth",
+    "name": "sign in with correct password",
+    "ms": 35,
+    "ok": true,
+    "value": "U@example.com"
+  },
+  {
+    "service": "auth",
+    "name": "sign in with wrong password",
+    "ms": 30,
+    "ok": true,
+    "value": {
+      "error": "auth/wrong-password"
+    }
+  },
+  {
+    "service": "auth",
+    "name": "sign in with unknown email",
+    "ms": 3,
+    "ok": true,
+    "value": {
+      "error": "auth/user-not-found"
+    }
+  },
+  {
+    "service": "auth",
+    "name": "update profile display name",
+    "ms": 4,
+    "ok": true,
+    "value": "Alice"
+  },
+  {
+    "service": "auth",
+    "name": "update password then sign in with it",
+    "ms": 61,
+    "ok": true,
+    "value": "Alice"
+  },
+  {
+    "service": "auth",
+    "name": "force refresh returns a new token",
+    "ms": 1103,
+    "ok": true,
+    "value": true
+  },
+  {
+    "service": "auth",
+    "name": "fetch sign in methods",
+    "ms": 2,
+    "ok": true,
+    "value": [
+      "password"
+    ]
+  },
+  {
+    "service": "auth",
+    "name": "password reset email for existing user",
+    "ms": 1,
+    "ok": true,
+    "value": "sent"
+  },
+  {
+    "service": "auth",
+    "name": "delete user then sign in fails",
+    "ms": 2,
+    "ok": true,
+    "value": {
+      "error": "auth/user-not-found"
+    }
+  },
+  {
+    "service": "auth",
+    "name": "anonymous sign in",
+    "ms": 3,
+    "ok": true,
+    "value": {
+      "anon": true,
+      "email": null,
+      "provider": "anonymous"
+    }
+  },
+  {
+    "service": "auth",
+    "name": "custom token sign in with claims",
+    "ms": 3,
+    "ok": true,
+    "value": {
+      "provider": "custom",
+      "role": "admin",
+      "uid": "c-U"
+    }
+  },
+  {
+    "service": "firestore",
+    "name": "set and get round trip of rich types",
+    "ms": 151,
+    "ok": true,
+    "value": {
+      "arr": [
+        1,
+        "a",
+        1
+      ],
+      "b": true,
+      "bytes": "AQID",
+      "d": 1.5,
+      "g": [
+        1.5,
+        2.5
+      ],
+      "i": 1,
+      "m": {
+        "k": {
+          "z": 1
+        }
+      },
+      "n": null,
+      "s": "x",
+      "ts": 1700000000123
+    }
+  },
+  {
+    "service": "firestore",
+    "name": "missing document does not exist",
+    "ms": 46,
+    "ok": true,
+    "value": false
+  },
+  {
+    "service": "firestore",
+    "name": "merge set keeps other fields",
+    "ms": 52,
+    "ok": true,
+    "value": [
+      "arr",
+      "b",
+      "bytes",
+      "d",
+      "extra",
+      "g",
+      "i",
+      "m",
+      "n",
+      "s",
+      "ts"
+    ]
+  },
+  {
+    "service": "firestore",
+    "name": "update nested field and delete field",
+    "ms": 48,
+    "ok": true,
+    "value": {
+      "hasS": false,
+      "z": 5
+    }
+  },
+  {
+    "service": "firestore",
+    "name": "update missing document fails",
+    "ms": 48,
+    "ok": true,
+    "value": {
+      "error": "not-found"
+    }
+  },
+  {
+    "service": "firestore",
+    "name": "increment transform",
+    "ms": 91,
+    "ok": true,
+    "value": 42
+  },
+  {
+    "service": "firestore",
+    "name": "increment on double",
+    "ms": 49,
+    "ok": true,
+    "value": 42.5
+  },
+  {
+    "service": "firestore",
+    "name": "arrayUnion and arrayRemove",
+    "ms": 51,
+    "ok": true,
+    "value": [
+      "b",
+      "c"
+    ]
+  },
+  {
+    "service": "firestore",
+    "name": "serverTimestamp resolves to a Timestamp",
+    "ms": 45,
+    "ok": true,
+    "value": true
+  },
+  {
+    "service": "firestore",
+    "name": "addDoc generates a 20 char id",
+    "ms": 1,
+    "ok": true,
+    "value": 20
+  },
+  {
+    "service": "firestore",
+    "name": "delete document",
+    "ms": 47,
+    "ok": true,
+    "value": false
+  },
+  {
+    "service": "firestore",
+    "name": "query equality filter",
+    "ms": 56,
+    "ok": true,
+    "value": [
+      "la",
+      "sf"
+    ]
+  },
+  {
+    "service": "firestore",
+    "name": "query range with implicit order",
+    "ms": 48,
+    "ok": true,
+    "value": [
+      "sf",
+      "la",
+      "ny",
+      "bj"
+    ]
+  },
+  {
+    "service": "firestore",
+    "name": "query orderBy desc with limit",
+    "ms": 48,
+    "ok": true,
+    "value": [
+      "bj",
+      "ny",
+      "la"
+    ]
+  },
+  {
+    "service": "firestore",
+    "name": "query limitToLast",
+    "ms": 48,
+    "ok": true,
+    "value": [
+      "ny",
+      "bj"
+    ]
+  },
+  {
+    "service": "firestore",
+    "name": "query array-contains",
+    "ms": 44,
+    "ok": true,
+    "value": [
+      "ny",
+      "sf"
+    ]
+  },
+  {
+    "service": "firestore",
+    "name": "query array-contains-any",
+    "ms": 44,
+    "ok": true,
+    "value": [
+      "dc",
+      "la",
+      "ny",
+      "sf"
+    ]
+  },
+  {
+    "service": "firestore",
+    "name": "query in",
+    "ms": 46,
+    "ok": true,
+    "value": [
+      "bj",
+      "ny"
+    ]
+  },
+  {
+    "service": "firestore",
+    "name": "query not-in excludes null",
+    "ms": 45,
+    "ok": true,
+    "value": [
+      "bj",
+      "ny"
+    ]
+  },
+  {
+    "service": "firestore",
+    "name": "query != excludes null",
+    "ms": 44,
+    "ok": true,
+    "value": [
+      "bj",
+      "la",
+      "sf"
+    ]
+  },
+  {
+    "service": "firestore",
+    "name": "query == null",
+    "ms": 48,
+    "ok": true,
+    "value": [
+      "dc"
+    ]
+  },
+  {
+    "service": "firestore",
+    "name": "query OR composite",
+    "ms": 48,
+    "ok": true,
+    "value": [
+      "dc",
+      "ny"
+    ]
+  },
+  {
+    "service": "firestore",
+    "name": "query AND of equality and range",
+    "ms": 48,
+    "ok": true,
+    "value": [
+      "ny",
+      "bj"
+    ]
+  },
+  {
+    "service": "firestore",
+    "name": "query cursors startAt and endBefore",
+    "ms": 48,
+    "ok": true,
+    "value": [
+      "sf",
+      "la",
+      "ny"
+    ]
+  },
+  {
+    "service": "firestore",
+    "name": "query startAfter snapshot",
+    "ms": 92,
+    "ok": true,
+    "value": [
+      "ny",
+      "sf"
+    ]
+  },
+  {
+    "service": "firestore",
+    "name": "query orderBy documentId",
+    "ms": 44,
+    "ok": true,
+    "value": [
+      "bj",
+      "dc",
+      "la"
+    ]
+  },
+  {
+    "service": "firestore",
+    "name": "orderBy excludes docs missing the field",
+    "ms": 49,
+    "ok": true,
+    "value": [
+      "dc",
+      "sf",
+      "la",
+      "ny",
+      "bj"
+    ]
+  },
+  {
+    "service": "firestore",
+    "name": "collection group query",
+    "ms": 46,
+    "ok": true,
+    "value": [
+      "qU/sf/lmU/a",
+      "qU/ny/lmU/b"
+    ]
+  },
+  {
+    "service": "firestore",
+    "name": "subcollection query is scoped to parent",
+    "ms": 43,
+    "ok": true,
+    "value": [
+      "a"
+    ]
+  },
+  {
+    "service": "firestore",
+    "name": "count aggregation",
+    "ms": 8,
+    "ok": true,
+    "value": 5
+  },
+  {
+    "service": "firestore",
+    "name": "sum and average aggregation",
+    "ms": 3,
+    "ok": true,
+    "value": {
+      "a": 7072,
+      "s": 35360
+    }
+  },
+  {
+    "service": "firestore",
+    "name": "filtered count",
+    "ms": 2,
+    "ok": true,
+    "value": 3
+  },
+  {
+    "service": "firestore",
+    "name": "batch is atomic on failure",
+    "ms": 5,
+    "ok": true,
+    "value": {
+      "exists": false,
+      "r": {
+        "error": "not-found"
+      }
+    }
+  },
+  {
+    "service": "firestore",
+    "name": "batch commits multiple writes",
+    "ms": 46,
+    "ok": true,
+    "value": [
+      "y"
+    ]
+  },
+  {
+    "service": "firestore",
+    "name": "transaction read-modify-write",
+    "ms": 95,
+    "ok": true,
+    "value": 70
+  },
+  {
+    "service": "firestore",
+    "name": "concurrent transactions serialize",
+    "ms": 1361,
+    "ok": true,
+    "value": 74
+  },
+  {
+    "service": "firestore",
+    "name": "transaction create on missing doc",
+    "ms": 87,
+    "ok": true,
+    "value": false
+  },
+  {
+    "service": "firestore",
+    "name": "onSnapshot initial and incremental",
+    "ms": 9,
+    "ok": true,
+    "value": [
+      0,
+      1,
+      2,
+      1
+    ]
+  },
+  {
+    "service": "firestore",
+    "name": "onSnapshot docChanges types",
+    "ms": 20000,
+    "ok": false,
+    "error": "timeout"
+  },
+  {
+    "service": "firestore",
+    "name": "query listener sees doc leave the result set",
+    "ms": 6,
+    "ok": true,
+    "value": [
+      1,
+      0
+    ]
+  },
+  {
+    "service": "database",
+    "name": "set and get object",
+    "ms": 26,
+    "ok": true,
+    "value": {
+      "x": 1,
+      "y": "two",
+      "z": [
+        1,
+        2
+      ]
+    }
+  },
+  {
+    "service": "database",
+    "name": "get missing path is null",
+    "ms": 1,
+    "ok": true,
+    "value": null
+  },
+  {
+    "service": "database",
+    "name": "update merges children",
+    "ms": 3,
+    "ok": true,
+    "value": {
+      "w": true,
+      "x": 1,
+      "z": [
+        1,
+        2
+      ]
+    }
+  },
+  {
+    "service": "database",
+    "name": "multi-path update",
+    "ms": 1,
+    "ok": true,
+    "value": {
+      "one": 1,
+      "two": 2
+    }
+  },
+  {
+    "service": "database",
+    "name": "remove deletes value",
+    "ms": 2,
+    "ok": true,
+    "value": {
+      "two": 2
+    }
+  },
+  {
+    "service": "database",
+    "name": "push keys are ordered",
+    "ms": 2,
+    "ok": true,
+    "value": {
+      "len": 20,
+      "ordered": true,
+      "vals": [
+        1,
+        2
+      ]
+    }
+  },
+  {
+    "service": "database",
+    "name": "server timestamp",
+    "ms": 1,
+    "ok": true,
+    "value": "number"
+  },
+  {
+    "service": "database",
+    "name": "server increment",
+    "ms": 1,
+    "ok": true,
+    "value": 8
+  },
+  {
+    "service": "database",
+    "name": "transaction on number",
+    "ms": 5,
+    "ok": true,
+    "value": 9
+  },
+  {
+    "service": "database",
+    "name": "concurrent transactions",
+    "ms": 3,
+    "ok": true,
+    "value": 12
+  },
+  {
+    "service": "database",
+    "name": "transaction on object",
+    "ms": 3,
+    "ok": true,
+    "value": {
+      "count": 1,
+      "w": true,
+      "x": 1,
+      "z": [
+        1,
+        2
+      ]
+    }
+  },
+  {
+    "service": "database",
+    "name": "transaction abort",
+    "ms": 0,
+    "ok": true,
+    "value": false
+  },
+  {
+    "service": "database",
+    "name": "orderByChild limitToFirst",
+    "ms": 3,
+    "ok": true,
+    "value": [
+      "b",
+      "c"
+    ]
+  },
+  {
+    "service": "database",
+    "name": "orderByChild startAt endAt",
+    "ms": 2,
+    "ok": true,
+    "value": [
+      "c",
+      "a"
+    ]
+  },
+  {
+    "service": "database",
+    "name": "orderByKey limitToLast",
+    "ms": 1,
+    "ok": true,
+    "value": [
+      "c",
+      "d"
+    ]
+  },
+  {
+    "service": "database",
+    "name": "orderByValue",
+    "ms": 1,
+    "ok": true,
+    "value": [
+      "y",
+      "z",
+      "x"
+    ]
+  },
+  {
+    "service": "database",
+    "name": "equalTo",
+    "ms": 1,
+    "ok": true,
+    "value": [
+      "d"
+    ]
+  },
+  {
+    "service": "database",
+    "name": "onValue receives updates",
+    "ms": 1,
+    "ok": true,
+    "value": [
+      null,
+      "x",
+      "y"
+    ]
+  },
+  {
+    "service": "database",
+    "name": "child events",
+    "ms": 3,
+    "ok": true,
+    "value": [
+      "added:a",
+      "changed:a",
+      "removed:a"
+    ]
+  },
+  {
+    "service": "database",
+    "name": "arrays become objects with numeric keys",
+    "ms": 1,
+    "ok": true,
+    "value": [
+      "a",
+      "b"
+    ]
+  },
+  {
+    "service": "storage",
+    "name": "upload string returns size and type",
+    "ms": 6,
+    "ok": true,
+    "value": {
+      "name": "a.txt",
+      "size": 11,
+      "type": "text/plain"
+    }
+  },
+  {
+    "service": "storage",
+    "name": "metadata has md5 and generation",
+    "ms": 2,
+    "ok": true,
+    "value": {
+      "bucket": "demo-compat.appspot.com",
+      "gen": "string",
+      "md5": "XrY7u+Ae7tCTyyK7j1rNww==",
+      "metagen": "1",
+      "path": "U/a.txt"
+    }
+  },
+  {
+    "service": "storage",
+    "name": "download url serves content",
+    "ms": 4,
+    "ok": true,
+    "value": {
+      "body": "hello world",
+      "media": true,
+      "token": true
+    }
+  },
+  {
+    "service": "storage",
+    "name": "getBytes",
+    "ms": 3,
+    "ok": true,
+    "value": "hello world"
+  },
+  {
+    "service": "storage",
+    "name": "custom metadata",
+    "ms": 5,
+    "ok": true,
+    "value": {
+      "k": "v"
+    }
+  },
+  {
+    "service": "storage",
+    "name": "update metadata",
+    "ms": 2,
+    "ok": true,
+    "value": {
+      "k": "w",
+      "metagen": "2",
+      "t": "text/csv"
+    }
+  },
+  {
+    "service": "storage",
+    "name": "upload bytes default content type",
+    "ms": 3,
+    "ok": true,
+    "value": "application/octet-stream"
+  },
+  {
+    "service": "storage",
+    "name": "resumable upload of 600 KiB",
+    "ms": 51,
+    "ok": true,
+    "value": {
+      "back": 614400,
+      "sample": 46,
+      "total": 614400
+    }
+  },
+  {
+    "service": "storage",
+    "name": "listAll with prefixes",
+    "ms": 12,
+    "ok": true,
+    "value": {
+      "items": [
+        "a.txt",
+        "b.txt",
+        "big.bin",
+        "c.bin"
+      ],
+      "prefixes": [
+        "sub"
+      ]
+    }
+  },
+  {
+    "service": "storage",
+    "name": "list with maxResults pages",
+    "ms": 2,
+    "ok": true,
+    "value": {
+      "more": true,
+      "n": 2
+    }
+  },
+  {
+    "service": "storage",
+    "name": "delete then metadata fails",
+    "ms": 3,
+    "ok": true,
+    "value": {
+      "error": "storage/object-not-found"
+    }
+  },
+  {
+    "service": "storage",
+    "name": "delete missing object fails",
+    "ms": 2,
+    "ok": true,
+    "value": {
+      "error": "storage/object-not-found"
+    }
+  }
+]
