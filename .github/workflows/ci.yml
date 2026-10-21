@@ -40,8 +40,12 @@ jobs:
         working-directory: packages/conformance/emulator
         run: |
           firebase emulators:start --project demo-compat > emulator.log 2>&1 &
-          for i in $(seq 1 90); do curl -sf http://127.0.0.1:4400/emulators >/dev/null && break; sleep 2; done
-          sleep 5
+          for port in 4400 9099 8080 9000 9199; do
+            for i in $(seq 1 120); do curl -s -o /dev/null "http://127.0.0.1:$port/" && break; sleep 2; done
+          done
+          # warm up the auth emulator before measuring
+          curl -s -X POST -H 'content-type: application/json' -d '{}' "http://127.0.0.1:9099/identitytoolkit.googleapis.com/v1/accounts:signUp?key=warmup" > /dev/null
+          sleep 3
       - run: node src/run.mjs --target emulator
         working-directory: packages/conformance
       - run: node src/run.mjs --target compat
