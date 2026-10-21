@@ -1,0 +1,17 @@
+services:
+  firebase-compat:
+    build: .
+    image: ghcr.io/devtechedge/firebase-compat:latest
+    ports:
+      - "8787:8787"
+    environment:
+      FIREBASE_PROJECT: demo-project
+      # Uncomment to protect the /__admin API used by the dashboard.
+      # ADMIN_TOKEN: change-me
+      # FIRESTORE_RULES: /config/firestore.rules
+    volumes:
+      - firebase-compat-data:/data
+      # - ./firestore.rules:/config/firestore.rules:ro
+    restart: unless-stopped
+volumes:
+  firebase-compat-data:
